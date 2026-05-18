@@ -1,0 +1,43 @@
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Output dello scanner (mai committare report con dati reali!)
+reports/
+*.csv
+*.json.local
+oci_perimeter_*.json
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OCI config (mai committare credenziali!)
+.oci/
+oci_api_key*.pem
+config
+
+# MCP local config (può contenere path assoluti privati)
+.mcp.json
+
+# Test/coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.claude/

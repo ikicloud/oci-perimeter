@@ -1,0 +1,89 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oci-perimeter-scanner"
+version = "0.1.0"
+description = "Security audit tool that maps the public exposure perimeter of an Oracle Cloud Infrastructure tenant"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "IKI Cloud", email = "info@iki-cloud.com"}
+]
+keywords = [
+    "oci",
+    "oracle-cloud",
+    "oracle-cloud-infrastructure",
+    "security",
+    "audit",
+    "perimeter",
+    "cloud-security",
+    "mcp",
+    "claude",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: System :: Systems Administration",
+    "Topic :: System :: Monitoring",
+]
+dependencies = [
+    "oci>=2.140.0",
+]
+
+[project.optional-dependencies]
+# Install with: pip install -e ".[mcp]"
+# Required only if you want to run the MCP server for Claude Code/Desktop.
+mcp = [
+    "mcp[cli]>=1.0.0",
+]
+
+# Install with: pip install -e ".[viz]"
+# Required only for the visualizer script that produces charts and HTML dashboard.
+viz = [
+    "matplotlib>=3.7.0",
+    "numpy>=1.24.0",
+]
+
+# Install with: pip install -e ".[all]"
+# Convenience target: everything (CLI + MCP + visualizer).
+all = [
+    "mcp[cli]>=1.0.0",
+    "matplotlib>=3.7.0",
+    "numpy>=1.24.0",
+]
+
+# Install with: pip install -e ".[dev]"
+# For contributors: linting, formatting, testing.
+dev = [
+    "pytest>=7.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+oci-perimeter-scan = "oci_perimeter_scanner.scanner:main"
+
+[project.urls]
+Homepage = "https://github.com/ikicloud/oci-perimeter"
+Repository = "https://github.com/ikicloud/oci-perimeter"
+Issues = "https://github.com/ikicloud/oci-perimeter/issues"
+Changelog = "https://github.com/ikicloud/oci-perimeter/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
